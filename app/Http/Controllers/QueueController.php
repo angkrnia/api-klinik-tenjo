@@ -469,6 +469,14 @@ class QueueController extends Controller
         ]);
 
         try {
+            if ($queue->status == 'completed') {
+                return response()->json([
+                    'code' => 400,
+                    'status' => true,
+                    'message' => 'Antrian ini sudah diselesaikan, tidak dapat diupdate.',
+                ], 400);
+            }
+
             $queue->history()->updateOrCreate(
                 ['queue_id' => $queue->id],
                 [
