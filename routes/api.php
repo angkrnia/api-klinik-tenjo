@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+// App Name
+Route::get('/app-info', function () {
+	// .env APP_NAME
+	return env('APP_NAME') ?? 'Klinik Tenjo';
+});
+
 Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'index']);
 Route::put('refresh-token', [App\Http\Controllers\Auth\LoginController::class, 'refreshToken']);
 Route::post('register', App\Http\Controllers\Auth\RegisterController::class);
