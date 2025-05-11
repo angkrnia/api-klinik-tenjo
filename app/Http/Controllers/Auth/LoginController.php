@@ -62,7 +62,8 @@ class LoginController extends Controller
                 'data' => [
                     'token' => $token,
                     'refresh_token' => $refreshToken,
-                    'user' => $user
+                    'user' => $user,
+                    'app_name' => env('APP_NAME') ?? 'Klinik Tenjo',
                 ]
             ]);
         } catch (\Throwable $th) {
